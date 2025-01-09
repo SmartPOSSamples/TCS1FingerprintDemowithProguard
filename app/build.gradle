@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 32
+    defaultConfig {
+        applicationId "com.authentec.java.ptapi.samples.basicsample"
+        minSdkVersion 23
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+        ndk{ abiFilters("armeabi-v7a")
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java',]
+            jniLibs.srcDirs = ['jniLibs']
+        }
+    }
+    ndkVersion '21.0.6113669'
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}
